@@ -33,7 +33,7 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/billp72/react-native-jsi.git",
+  "repository": "https://github.com/billp72/react-native-jsi",
   "author": "Bill Pope",
   "license": "MIT",
   "publishConfig": {
