@@ -65,15 +65,11 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(install)
 
 
 static void install(jsi::Runtime &jsiRuntime, SimpleJsi *simpleJsi) {
-    auto getDeviceName = Function::createFromHostFunction(jsiRuntime,
-                                                          PropNameID::forAscii(jsiRuntime,
-                                                                               "getDeviceName"),
-                                                          0,
-                                                          [simpleJsi](Runtime &runtime,
-                                                                   const Value &thisValue,
-                                                                   const Value *arguments,
-                                                                   size_t count) -> Value {
-        
+    auto getDeviceName = Function::createFromHostFunction(jsiRuntime,PropNameID::forAscii(jsiRuntime,"getDeviceName"),
+        0,[simpleJsi](Runtime &runtime,
+        const Value &thisValue,
+        const Value *arguments,
+        size_t count) -> Value {
         jsi::String deviceName = convertNSStringToJSIString(runtime, [simpleJsi getModel]);
         
         return Value(runtime, deviceName);
@@ -81,46 +77,37 @@ static void install(jsi::Runtime &jsiRuntime, SimpleJsi *simpleJsi) {
     
     jsiRuntime.global().setProperty(jsiRuntime, "getDeviceName", move(getDeviceName));
     
-    auto setItem = Function::createFromHostFunction(jsiRuntime,
-                                                    PropNameID::forAscii(jsiRuntime,
-                                                                         "setItem"),
-                                                    2,
-                                                    [simpleJsi](Runtime &runtime,
-                                                             const Value &thisValue,
-                                                             const Value *arguments,
-                                                             size_t count) -> Value {
+    auto setItem = Function::createFromHostFunction(jsiRuntime,PropNameID::forAscii(jsiRuntime,"setItem"),
+       2,[simpleJsi](Runtime &runtime,
+       const Value &thisValue,
+       const Value *arguments,
+       size_t count) -> Value {
         
-        NSString *key = convertJSIStringToNSString(runtime, arguments[0].getString(runtime));
-        NSString *value = convertJSIStringToNSString(runtime, arguments[1].getString(runtime));
+       NSString *key = convertJSIStringToNSString(runtime, arguments[0].getString(runtime));
+       NSString *value = convertJSIStringToNSString(runtime, arguments[1].getString(runtime));
         
-        [simpleJsi setItem:key :value];
+       [simpleJsi setItem:key :value];
         
-        return Value(true);
+       return Value(true);
     });
     
     jsiRuntime.global().setProperty(jsiRuntime, "setItem", move(setItem));
     
     
-    auto getItem = Function::createFromHostFunction(jsiRuntime,
-                                                    PropNameID::forAscii(jsiRuntime,
-                                                                         "getItem"),
-                                                    0,
-                                                    [simpleJsi](Runtime &runtime,
-                                                             const Value &thisValue,
-                                                             const Value *arguments,
-                                                             size_t count) -> Value {
+    auto getItem = Function::createFromHostFunction(jsiRuntime,PropNameID::forAscii(jsiRuntime,"getItem"),
+       0,[simpleJsi](Runtime &runtime,
+       const Value &thisValue,
+       const Value *arguments,
+       size_t count) -> Value {
         
-        NSString *key = convertJSIStringToNSString(runtime, arguments[0].getString(runtime));
+       NSString *key = convertJSIStringToNSString(runtime, arguments[0].getString(runtime));
+       NSString *value = [simpleJsi getItem:key];
         
-        NSString *value = [simpleJsi getItem:key];
-        
-        return Value(runtime, convertNSStringToJSIString(runtime, value));
+       return Value(runtime, convertNSStringToJSIString(runtime, value));
     });
     
     jsiRuntime.global().setProperty(jsiRuntime, "getItem", move(getItem));
-    
-    
-    
+      
 }
 
 
