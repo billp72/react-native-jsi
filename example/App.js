@@ -6,6 +6,11 @@ export default function App() {
   const [result, setResult] = React.useState();
   const [deviceName, setDeviceName] = React.useState();
   const [getItemValue, setGetItemValue] = React.useState();
+  const [nums, setNums] = React.useState({
+    num1:3,
+    num2:4,
+    answer:0
+  });
 
   React.useEffect(() => {
     setResult(simpleJsiModule.helloWorld());
@@ -15,7 +20,6 @@ export default function App() {
     <View style={styles.container}>
       <Text>Bindings Installed: {isLoaded().toString()}</Text>
       <Text>Result: {result}</Text>
-
       <TouchableOpacity
         onPress={() => {
           let value = simpleJsiModule.getDeviceName();
@@ -51,6 +55,16 @@ export default function App() {
         <Text style={styles.buttonTxt}>
           Async callback (Runs on seperate thread in c++)
         </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => {
+          simpleJsiModule.multiplyWithCallback(nums.num1,nums.num2,(answer) => {
+            setNums({num1:nums.num1+1,num2:nums.num2+1,answer:answer})
+          });
+        }}
+        style={styles.button}>
+        <Text style={styles.buttonTxt}>answer: {nums.answer}</Text>
       </TouchableOpacity>
     </View>
   );
