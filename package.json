@@ -1,5 +1,5 @@
 {
-  "name": "react-native-jsi-template",
+  "name": "react-native-jsi",
   "version": "0.3.0",
   "description": "How to build a jsi module example library",
   "main": "./src/index.ts",

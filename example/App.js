@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, NativeModules} from 'react-native';
-import simpleJsiModule, {isLoaded} from 'react-native-jsi-template';
+import simpleJsiModule, {isLoaded} from 'react-native-jsi';
 
 export default function App() {
   const [result, setResult] = React.useState();
