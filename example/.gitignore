@@ -20,9 +20,13 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-
+*.dll
+*.dll.lock
 # Android/IntelliJ
-#
+native/
+caches/
+daemon/
+wrapper/
 build/
 .idea
 .gradle
