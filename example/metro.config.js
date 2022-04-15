@@ -1,14 +1,20 @@
-const path = require('path');
-const blacklist = require('metro-config/src/defaults/exclusionList');
-const escape = require('escape-string-regexp');
-const pak = require('../package.json');
-
-const root = path.resolve(__dirname, '..');
-
-const modules = Object.keys({
-  ...pak.peerDependencies,
-});
-
+/**
+ * Metro configuration for React Native
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ */
+ const path = require('path');
+ const blacklist = require('metro-config/src/defaults/exclusionList');
+ const escape = require('escape-string-regexp');
+ const pak = require('../package.json');
+ 
+ const root = path.resolve(__dirname, '..');
+ 
+ const modules = Object.keys({
+   ...pak.peerDependencies,
+ });
+ 
 module.exports = {
   projectRoot: __dirname,
   watchFolders: [root],
@@ -27,7 +33,6 @@ module.exports = {
       return acc;
     }, {}),
   },
-
   transformer: {
     getTransformOptions: async () => ({
       transform: {
