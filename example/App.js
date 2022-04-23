@@ -56,6 +56,7 @@
  
  const App: () => Node = () => {
    const [result, setResult] = React.useState();
+   const [cb, setCb] = React.useState();
    const [deviceName, setDeviceName] = React.useState();
    const [getItemValue, setGetItemValue] = React.useState();
    const [nums, setNums] = React.useState({
@@ -87,6 +88,7 @@
            <View style={styles.container}>
             <Text>Bindings Installed: {isLoaded().toString()}</Text>
             <Text>Result: {result}</Text>
+            <Text>{cb}</Text>
            </View>
            <TouchableOpacity
              onPress={() => {
@@ -116,7 +118,9 @@
            <TouchableOpacity
              onPress={() => {
                simpleJsiModule.foo((error, result) => {
-                 console.log('error:', error, 'result:', result);
+                 //console.log('error:', error, 'result:', result);
+                 setCb(result)
+                 //console.log("Bill")
                });
              }}
              style={styles.button}>
