@@ -86,7 +86,7 @@
              backgroundColor: isDarkMode ? Colors.black : Colors.white,
            }}>
            <View style={styles.container}>
-            <Text>Bindings Installed: {isLoaded().toString()}</Text>
+            <Text>Bindings Installed: </Text>
             <Text>Result: {result}</Text>
             <Text>{cb}</Text>
            </View>
@@ -101,7 +101,7 @@
  
            <TouchableOpacity
              onPress={() => {
-               simpleJsiModule.setItem('helloworld', 'Hello World');
+              simpleJsiModule.setItem('helloworld', 'Hello World');
              }}
              style={styles.button}>
              <Text style={styles.buttonTxt}>setItem: "Hello World"</Text>
@@ -109,7 +109,7 @@
  
            <TouchableOpacity
              onPress={() => {
-               setGetItemValue(simpleJsiModule.getItem('helloworld'));
+              setGetItemValue(simpleJsiModule.getItem('helloworld'));
              }}
              style={styles.button}>
              <Text style={styles.buttonTxt}>getItem: {getItemValue}</Text>
