@@ -56,6 +56,7 @@
  
  const App: () => Node = () => {
    const [result, setResult] = React.useState();
+   //const [loaded, setLoaded] = React.useState('')
    const [cb, setCb] = React.useState();
    const [deviceName, setDeviceName] = React.useState();
    const [getItemValue, setGetItemValue] = React.useState();
@@ -72,6 +73,7 @@
  
    React.useEffect(() => {
      setResult(simpleJsiModule.helloWorld());
+     //setLoaded(isLoaded);
    }, []);
  
    return (
@@ -86,7 +88,7 @@
              backgroundColor: isDarkMode ? Colors.black : Colors.white,
            }}>
            <View style={styles.container}>
-            <Text>Bindings Installed: </Text>
+            <Text>Bindings Installed:</Text>
             <Text>Result: {result}</Text>
             <Text>{cb}</Text>
            </View>

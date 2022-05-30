@@ -18,13 +18,13 @@ You must have Android NDK and CMake installed on android to build the library.
 ## Methods
 The following methods are implemented.
 
-### Platfom agnostic
+### Platform agnostic
 The relevant code is present in `cpp/example.cpp` file.
 ```ts
     helloWorld():string;
 
     multiplyWithCallback(x:number,y:number,callback:(z:number) => void):void
-    
+
     multiply(x:number,y:number):number
 ```
 
@@ -32,7 +32,7 @@ The relevant code is present in `cpp/example.cpp` file.
 The relevant code on android is in `android/cpp-adapter.cpp` and `ios/SimpleJsi.mm` on iOS.
 ```ts
     getDeviceName():string
-    
+
     setItem(key:string,value:string):boolean
 
     getItem(key:string):string
@@ -42,7 +42,7 @@ The relevant code on android is in `android/cpp-adapter.cpp` and `ios/SimpleJsi.
 ```tsx
 import simpleJsiModule from "react-native-jsi-template";
 
-simpleJsiModule.helloWorld() // returns helloworld.
+simpleJsiModule.helloWorld()
 ```
 Run the example app for more.
 
